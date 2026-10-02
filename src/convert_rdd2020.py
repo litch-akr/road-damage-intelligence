@@ -3,9 +3,10 @@ from shutil import copy2
 import random
 import xml.etree.ElementTree as ET
 
-SOURCE_DIR = Path("data/train")
-DEST_DIR = Path("data/yolo")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
+SOURCE_DIR = PROJECT_ROOT / "data" / "train"
+DEST_DIR = PROJECT_ROOT / "data" / "yolo"
 CLASS_MAPPING = {
     "D00": 0,
     "D10": 1,
@@ -99,10 +100,7 @@ def process_country(country, images, split):
 
         label_dest = DEST_DIR / split / "labels" / f"{image_path.stem}.txt"
 
-        # Copy image
         copy2(image_path, image_dest)
-
-        # Convert XML annotation
         convert_voc_to_yolo(xml_path, label_dest)
 
     print(f"{country}: {split} → {len(images)} images")
