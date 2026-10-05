@@ -53,7 +53,7 @@ Road Damage Intelligence is an end-to-end computer vision and deep learning proj
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Installation
 ```bash
